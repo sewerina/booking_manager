@@ -8,16 +8,21 @@ import org.junit.Test;
 public class BookingManagerTest {
 
     @Test
-    public void testConstructor() {
+    public void testAddHotel() {
         BookingManager bm = new BookingManager();
-
+        boolean res = bm.addHotel(TestHelper.createTestHotel());
+        Assert.assertTrue(res);
     }
 
     @Test
-    public void testAddHotel() {
+    public void testGetHotel() {
         BookingManager bm = new BookingManager();
-        boolean res = bm.addHotel(new Hotel());
-        Assert.assertTrue(res);
+        bm.addHotel(TestHelper.createTestHotel());
+        Iterable<Hotel> hotels = bm.getHotels();
+        Assert.assertNotNull(hotels);
+        Assert.assertTrue(hotels.iterator().hasNext());
     }
+
+
 
 }
